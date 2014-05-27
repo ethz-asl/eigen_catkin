@@ -20,4 +20,5 @@ add_dependencies(${PROJECT_NAME} glog_src)
 target_link_libraries(${PROJECT_NAME} ${CATKIN_DEVEL_PREFIX}/lib/libglog${CMAKE_SHARED_LIBRARY_SUFFIX})
 
 cs_install()
-cs_export(CFG_EXTRAS eigen-extras.cmake)
+cs_export(INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include/eigen3/
+          CFG_EXTRAS eigen-extras.cmake)
