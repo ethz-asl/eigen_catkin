@@ -7,7 +7,7 @@ catkin_simple()
 
 include(ExternalProject)
 
-file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
+file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/eigen3)
 
 ExternalProject_Add(eigen_src
   URL http://bitbucket.org/eigen/eigen/get/3.2.1.tar.bz2
