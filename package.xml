@@ -9,6 +9,4 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>catkin_simple</buildtool_depend>
-
-  <build_depend>Eigen</build_depend>
 </package>
