@@ -10,7 +10,7 @@ include(ExternalProject)
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/eigen3)
 
 ExternalProject_Add(eigen_src
-  URL http://bitbucket.org/eigen/eigen/get/3.2.1.tar.bz2
+  URL http://bitbucket.org/eigen/eigen/get/3.2.2.tar.bz2
   UPDATE_COMMAND ""
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}
 )
