@@ -12,7 +12,7 @@ file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/eigen3)
 ExternalProject_Add(eigen_src
   URL http://bitbucket.org/eigen/eigen/get/3.2.1.tar.bz2
   UPDATE_COMMAND ""
-  CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}
+  CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}  -DCMAKE_BUILD_TYPE:STRING=Release
 )
 
 cs_add_library(${PROJECT_NAME} src/dependency_tracker.cc)
