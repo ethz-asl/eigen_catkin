@@ -1,0 +1,31 @@
+Only in eigen: .DS_Store
+diff -u eigen/.hg_archival.txt Eigen_gtsam/.hg_archival.txt
+--- eigen/.hg_archival.txt	2014-02-26 16:35:18.000000000 +0100
++++ Eigen_gtsam/.hg_archival.txt	2014-08-07 11:53:30.000000000 +0200
+@@ -1,4 +1,4 @@
+ repo: 8a21fd850624c931e448cbcfb38168cb2717c790
+-node: 6b38706d90a9fe182e66ab88477b3dbde34b9f66
++node: ffa86ffb557094721ca71dcea6aed2651b9fd610
+ branch: 3.2
+-tag: 3.2.1
++tag: 3.2.0
+diff -u eigen/.hgtags Eigen_gtsam/.hgtags
+--- eigen/.hgtags	2014-02-26 16:35:18.000000000 +0100
++++ Eigen_gtsam/.hgtags	2014-08-07 11:53:30.000000000 +0200
+@@ -23,4 +23,3 @@
+ da195914abcc1d739027cbee7c52077aab30b336 3.2-beta1
+ 4b687cad1d23066f66863f4f87298447298443df 3.2-rc1
+ 1eeda7b1258bcd306018c0738e2b6a8543661141 3.2-rc2
+-ffa86ffb557094721ca71dcea6aed2651b9fd610 3.2.0
+Common subdirectories: eigen/Eigen and Eigen_gtsam/Eigen
+Common subdirectories: eigen/bench and Eigen_gtsam/bench
+Common subdirectories: eigen/blas and Eigen_gtsam/blas
+Common subdirectories: eigen/cmake and Eigen_gtsam/cmake
+Common subdirectories: eigen/debug and Eigen_gtsam/debug
+Common subdirectories: eigen/demos and Eigen_gtsam/demos
+Common subdirectories: eigen/doc and Eigen_gtsam/doc
+Common subdirectories: eigen/failtest and Eigen_gtsam/failtest
+Common subdirectories: eigen/lapack and Eigen_gtsam/lapack
+Common subdirectories: eigen/scripts and Eigen_gtsam/scripts
+Common subdirectories: eigen/test and Eigen_gtsam/test
+Common subdirectories: eigen/unsupported and Eigen_gtsam/unsupported

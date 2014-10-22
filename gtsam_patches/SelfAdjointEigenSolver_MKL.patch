@@ -1,0 +1,11 @@
+--- eigen/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_MKL.h	2014-02-26 16:35:18.000000000 +0100
++++ Eigen_gtsam/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_MKL.h	2014-08-07 11:53:30.000000000 +0200
+@@ -33,7 +33,7 @@
+ #ifndef EIGEN_SAEIGENSOLVER_MKL_H
+ #define EIGEN_SAEIGENSOLVER_MKL_H
+ 
+-#include "Eigen/src/Core/util/MKL_support.h"
++#include "../Core/util/MKL_support.h"
+ 
+ namespace Eigen { 
+ 
