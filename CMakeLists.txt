@@ -12,7 +12,7 @@ file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/eigen3)
 ExternalProject_Add(eigen_src
   URL http://robotics.ethz.ch/files/gtsam_Eigen_3.2.1.tar.gz
   UPDATE_COMMAND ""
-  CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}
+  CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}  -DCMAKE_BUILD_TYPE:STRING=Release
 )
 
 cs_add_library(${PROJECT_NAME} src/dependency_tracker.cc)
