@@ -19,5 +19,12 @@ cs_add_library(${PROJECT_NAME} src/dependency_tracker.cc)
 add_dependencies(${PROJECT_NAME} eigen_src)
 
 cs_install()
+install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/eigen3
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+  FILES_MATCHING PATTERN "*.hpp"
+  PATTERN "*.h"
+  PATTERN ".svn" EXCLUDE
+)
+
 cs_export(INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include/eigen3/
           CFG_EXTRAS eigen-extras.cmake)
