@@ -1,0 +1,20 @@
+--- eigen/Eigen/src/Cholesky/LLT_MKL.h	2014-02-26 16:35:18.000000000 +0100
++++ Eigen_gtsam/Eigen/src/Cholesky/LLT_MKL.h	2014-08-07 11:53:30.000000000 +0200
+@@ -33,7 +33,7 @@
+ #ifndef EIGEN_LLT_MKL_H
+ #define EIGEN_LLT_MKL_H
+ 
+-#include "Eigen/src/Core/util/MKL_support.h"
++#include "../Core/util/MKL_support.h"
+ #include <iostream>
+ 
+ namespace Eigen { 
+@@ -60,7 +60,7 @@
+     lda = m.outerStride(); \
+ \
+     info = LAPACKE_##MKLPREFIX##potrf( matrix_order, uplo, size, (MKLTYPE*)a, lda ); \
+-    info = (info==0) ? Success : NumericalIssue; \
++    info = (info==0) ? -1 : 1; \
+     return info; \
+   } \
+ }; \
