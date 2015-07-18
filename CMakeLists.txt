@@ -10,7 +10,7 @@ include(ExternalProject)
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include/eigen3)
 
 ExternalProject_Add(eigen_src
-  DOWNLOAD_COMMAND wget --retry-connrefused --waitretry=1 --timeout=12 --tries 10 https://github.com/ethz-asl/thirdparty_library_binaries/raw/master/gtsam_Eigen_3.2.4.tar.gz
+  URL https://github.com/ethz-asl/thirdparty_library_binaries/raw/master/gtsam_Eigen_3.2.4.tar.gz
   UPDATE_COMMAND ""
   CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}  -DCMAKE_BUILD_TYPE:STRING=Release
 )
