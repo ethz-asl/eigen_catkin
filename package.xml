@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>eigen_catkin</name>
-  <version>0.0.1</version> 
+  <version>0.0.301</version> 
   <description>eigen_catkin</description>
   <maintainer email="paul.furgale@mavt.ethz.ch">Paul Furgale</maintainer>
   <author>Paul Furgale</author>
