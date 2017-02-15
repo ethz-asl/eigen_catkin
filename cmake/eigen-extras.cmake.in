@@ -1,4 +1,4 @@
-set(@PROJECT_NAME@_INCLUDE_DIRS @CATKIN_DEVEL_PREFIX@/include/eigen3/)
+set(@PROJECT_NAME@_INCLUDE_DIRS @EIGEN_CATKIN_EIGEN_INCLUDE@)
 
 # The following eigen_catkin_enforce macro can be called in a depending 
 # project's CMakeLists.txt file (Below findpackage eigen_catkin or the 
@@ -9,5 +9,5 @@ set(@PROJECT_NAME@_INCLUDE_DIRS @CATKIN_DEVEL_PREFIX@/include/eigen3/)
 # It is possible to get that right by careful treatment of workspace layer 
 # order but calling this macro is easier.
 macro(eigen_catkin_enforce)
-	include_directories(BEFORE ${@PROJECT_NAME@_INCLUDE_DIRS})
+  include_directories(BEFORE ${@PROJECT_NAME@_INCLUDE_DIRS})
 endmacro()
