@@ -12,37 +12,37 @@ set(EIGEN_CATKIN_EIGEN_INCLUDE_SIGNATURE ${EIGEN_CATKIN_EIGEN_INCLUDE}/signature
 
 set(EIGEN_MINIMUM_VERSION 3.2.10)
 
-# If set to OFF, will not attempt to try to use the system Eigen.
-# If set to ON, will attempt to use it if the version if suitable.
-set(USE_SYSTEM_EIGEN "ON" CACHE INTERNAL "Use a system installation of Eigen")
-
+# If set to OFF, will compile the given version of Eigen.
+# If set to ON, will use the system version of Eigen.
+# If set to AUTO, will determine if the system version is suitable.
+set(USE_SYSTEM_EIGEN "AUTO" CACHE INTERNAL "Whether to use the system version of Eigen.")
 include(${CMAKE_CURRENT_SOURCE_DIR}/use-system-installation-of-eigen.cmake)
 
 # Check if the version is suitable, otherwise force downloading the newer one.
-if(USE_SYSTEM_EIGEN)
+if(USE_SYSTEM_EIGEN STREQUAL "AUTO")
   # We don't use the find_package version checks here because they fail on
   # Ubuntu 16.04, so we'll do it manually.
   find_package(Eigen3 QUIET)
-  if (EIGEN3_FOUND)
+  if(EIGEN3_FOUND)
     # Necessary for Ubuntu 16.04's god-awful FindEigen3.cmake.
-    if ((NOT (DEFINED EIGEN3_VERSION)) AND (DEFINED EIGEN3_VERSION_STRING))
+    if((NOT (DEFINED EIGEN3_VERSION)) AND (DEFINED EIGEN3_VERSION_STRING))
       set(EIGEN3_VERSION ${EIGEN3_VERSION_STRING})
     endif()
 
     # Double check what Eigen3 found, since it doesn't seem to be sufficiently
     # strict at least on OS X. And on Ubuntu 16.04 version is anyway undefined.
-    if ((${EIGEN3_VERSION} VERSION_GREATER ${EIGEN_MINIMUM_VERSION}) OR (${EIGEN3_VERSION} VERSION_EQUAL ${EIGEN_MINIMUM_VERSION}))
+    if((${EIGEN3_VERSION} VERSION_GREATER ${EIGEN_MINIMUM_VERSION}) OR (${EIGEN3_VERSION} VERSION_EQUAL ${EIGEN_MINIMUM_VERSION}))
       set(USE_SYSTEM_EIGEN "ON")
       message(STATUS "Suitable Eigen version found. Minimum version: ${EIGEN_MINIMUM_VERSION} Found version: ${EIGEN3_VERSION}")
-    else ()
+    else()
       set(USE_SYSTEM_EIGEN "OFF")
       message(STATUS "Suitable Eigen version not found. Minimum version: ${EIGEN_MINIMUM_VERSION} Found version: ${EIGEN3_VERSION}")
-    endif ()
-  else ()
+    endif()
+  else()
     set(USE_SYSTEM_EIGEN "OFF")
     message(STATUS "No suitable Eigen version found. Minimum version: ${EIGEN_MINIMUM_VERSION}")
-  endif ()
-endif ()
+  endif()
+endif()
 
 if(USE_SYSTEM_EIGEN)
   message(STATUS "eigen_catkin is configured to USE system eigen")
