@@ -78,7 +78,7 @@ else()
   file(MAKE_DIRECTORY ${EIGEN_CATKIN_EIGEN_INCLUDE})
   ExternalProject_Add(eigen_src
     UPDATE_COMMAND ""
-    URL https://github.com/ethz-asl/thirdparty_library_binaries/raw/master/Eigen_3.2.10.tar.gz
+    URL http://bitbucket.org/eigen/eigen/get/3.2.10.tar.bz2
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}  -DCMAKE_BUILD_TYPE:STRING=Release
   )
 
