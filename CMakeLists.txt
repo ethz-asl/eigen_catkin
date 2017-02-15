@@ -3,7 +3,7 @@ project(eigen_catkin)
 
 find_package(catkin_simple REQUIRED)
 
-catkin_simple()
+catkin_simple(ALL_DEPS_REQUIRED)
 
 include(ExternalProject)
 
@@ -20,11 +20,11 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/use-system-installation-of-eigen.cmake)
 
 # Check if the version is suitable, otherwise force downloading the newer one.
 if(USE_SYSTEM_EIGEN)
-  find_package(EIGEN3 ${EIGEN_MINIMUM_VERSION} QUIET)
+  find_package(Eigen3)
   if (EIGEN3_FOUND)
     # Double check what Eigen3 found, since it doesn't seem to be sufficiently
     # strict at least on OS X.
-    if ((${EIGEN3_VERSION} VERSION_GREATER ${EIGEN_MINIMUM_VERSION}) OR (${EIGEN3_VERSION} VERSION_EQUAL ${EIGEN_MINIMUM_VERSION}))
+    if ((${EIGEN3_VERSION_STRING} VERSION_GREATER ${EIGEN_MINIMUM_VERSION}) OR (${EIGEN3_VERSION_STRING} VERSION_EQUAL ${EIGEN_MINIMUM_VERSION}))
       set(USE_SYSTEM_EIGEN "ON")
       message(STATUS "Suitable Eigen version found. Minimum version: ${EIGEN_MINIMUM_VERSION} Found version: ${EIGEN3_VERSION}")
     else ()
