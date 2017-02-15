@@ -20,9 +20,6 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/use-system-installation-of-eigen.cmake)
 
 # Check if the version is suitable, otherwise force downloading the newer one.
 if(USE_SYSTEM_EIGEN)
-  # This has to be done this way because FindEigen3 doesn't enforce version
-  # numbers, or expose any version variables. FindEigen in cmake_modules does
-  # however.
   find_package(EIGEN3 ${EIGEN_MINIMUM_VERSION} QUIET)
   if (EIGEN3_FOUND)
     # Double check what Eigen3 found, since it doesn't seem to be sufficiently
