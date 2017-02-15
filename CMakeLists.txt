@@ -23,15 +23,22 @@ if(USE_SYSTEM_EIGEN)
   # This has to be done this way because FindEigen3 doesn't enforce version
   # numbers, or expose any version variables. FindEigen in cmake_modules does
   # however.
-  find_package(Eigen ${EIGEN_MINIMUM_VERSION} QUIET)
+  find_package(EIGEN3 ${EIGEN_MINIMUM_VERSION} QUIET)
   if (EIGEN3_FOUND)
-    set(USE_SYSTEM_EIGEN "ON")
-    message(STATUS "Suitable Eigen version found. Minimum version: ${EIGEN_MINIMUM_VERSION} Found version: ${Eigen_VERSION}")
-  else()
+    # Double check what Eigen3 found, since it doesn't seem to be sufficiently
+    # strict at least on OS X.
+    if ((${EIGEN3_VERSION} VERSION_GREATER ${EIGEN_MINIMUM_VERSION}) OR (${EIGEN3_VERSION} VERSION_EQUAL ${EIGEN_MINIMUM_VERSION}))
+      set(USE_SYSTEM_EIGEN "ON")
+      message(STATUS "Suitable Eigen version found. Minimum version: ${EIGEN_MINIMUM_VERSION} Found version: ${EIGEN3_VERSION}")
+    else ()
+      set(USE_SYSTEM_EIGEN "OFF")
+      message(STATUS "Suitable Eigen version not found. Minimum version: ${EIGEN_MINIMUM_VERSION} Found version: ${EIGEN3_VERSION}")
+    endif ()
+  else ()
     set(USE_SYSTEM_EIGEN "OFF")
-    message(STATUS "No suitable Eigen version found.  Minimum version: ${EIGEN_MINIMUM_VERSION}")
-  endif()
-endif()
+    message(STATUS "No suitable Eigen version found. Minimum version: ${EIGEN_MINIMUM_VERSION}")
+  endif ()
+endif ()
 
 if(USE_SYSTEM_EIGEN)
   message(STATUS "eigen_catkin is configured to USE system eigen")
