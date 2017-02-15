@@ -10,10 +10,28 @@ include(ExternalProject)
 set(EIGEN_CATKIN_EIGEN_INCLUDE ${CATKIN_DEVEL_PREFIX}/include/eigen3)
 set(EIGEN_CATKIN_EIGEN_INCLUDE_SIGNATURE ${EIGEN_CATKIN_EIGEN_INCLUDE}/signature_of_eigen3_matrix_library)
 
-set(USE_SYSTEM_EIGEN "OFF" CACHE INTERNAL "Use a system installation of Eigen")
+set(EIGEN_MINIMUM_VERSION 3.2.10)
+
+# If set to OFF, will not attempt to try to use the system Eigen.
+# If set to ON, will attempt to use it if the version if suitable.
+set(USE_SYSTEM_EIGEN "ON" CACHE INTERNAL "Use a system installation of Eigen")
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/use-system-installation-of-eigen.cmake)
 
+# Check if the version is suitable, otherwise force downloading the newer one.
+if(USE_SYSTEM_EIGEN)
+  # This has to be done this way because FindEigen3 doesn't enforce version
+  # numbers, or expose any version variables. FindEigen in cmake_modules does
+  # however.
+  find_package(Eigen ${EIGEN_MINIMUM_VERSION} QUIET)
+  if (EIGEN3_FOUND)
+    set(USE_SYSTEM_EIGEN "ON")
+    message(STATUS "Suitable Eigen version found. Minimum version: ${EIGEN_MINIMUM_VERSION} Found version: ${Eigen_VERSION}")
+  else()
+    set(USE_SYSTEM_EIGEN "OFF")
+    message(STATUS "No suitable Eigen version found.  Minimum version: ${EIGEN_MINIMUM_VERSION}")
+  endif()
+endif()
 
 if(USE_SYSTEM_EIGEN)
   message(STATUS "eigen_catkin is configured to USE system eigen")
@@ -27,7 +45,7 @@ if(USE_SYSTEM_EIGEN)
       unset(Eigen_INCLUDE_DIRS CACHE)
     endif()
   endif()
-  
+
   # see https://github.com/ethz-asl/ethzasl_icp_mapping/issues/38 for the discussion behind the following
   find_package(Eigen3)
 
@@ -46,7 +64,7 @@ if(USE_SYSTEM_EIGEN)
 
   if(EIGEN_NAME)
     # this way ${EIGEN_NAME} will end up in the cs_export call's DEPENDS argument.
-    list(APPEND _DEPENDS ${EIGEN_NAME}) 
+    list(APPEND _DEPENDS ${EIGEN_NAME})
     message(STATUS "Found and using system Eigen in ${EIGEN_CATKIN_EIGEN_INCLUDE}")
   else()
     message(FATAL_ERROR "Could not find a system Eigen installation! What about turning on eigen_catkin's own Eigen installation by removing USE_SYSTEM_EIGEN.cmake or switching back to the master branch.")
@@ -84,6 +102,6 @@ if(NOT USE_SYSTEM_EIGEN)
   )
 endif()
 
-cs_export(INCLUDE_DIRS ${EIGEN_CATKIN_EIGEN_INCLUDE} 
+cs_export(INCLUDE_DIRS ${EIGEN_CATKIN_EIGEN_INCLUDE}
           DEPENDS ${_DEPENDS}
           CFG_EXTRAS eigen-extras.cmake)
