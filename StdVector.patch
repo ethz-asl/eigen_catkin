@@ -1,14 +1,14 @@
 --- Eigen/StdVector
 +++ Eigen/StdVector
-@@ -11,6 +11,8 @@
- #ifndef EIGEN_STDVECTOR_MODULE_H
- #define EIGEN_STDVECTOR_MODULE_H
- 
-+#if __cplusplus < 201103L
-+
+@@ -14,6 +14,8 @@
  #include "Core"
  #include <vector>
  
++#if __cplusplus < 201103L
++
+ #if (defined(_MSC_VER) && defined(_WIN64)) /* MSVC auto aligns in 64 bit builds */
+ 
+ #define EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(...)
 @@ -24,4 +26,6 @@
  
  #endif
