@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>eigen_catkin_info</name>
+  <version>0.0.1</version> 
+  <description>This is simple package depending on eigen_catkin mostly to
+  test eigen_catkin.
+  Additionally it provides information about where and which Eigen was found by eigen_catkin
+  when run.</description>
+  <maintainer email="sommerh@ethz.ch">Hannes Sommer</maintainer>
+  <author>ASL</author>
+  <license>New BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+
+  <build_depend>eigen_catkin</build_depend>
+</package>
