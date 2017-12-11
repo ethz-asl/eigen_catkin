@@ -86,7 +86,7 @@ else()
   ExternalProject_Add(eigen_src
     UPDATE_COMMAND ""
     URL http://bitbucket.org/eigen/eigen/get/3.2.10.tar.bz2
-    PATCH_COMMAND patch -p0 < ${CMAKE_SOURCE_DIR}/StdVector.patch
+    PATCH_COMMAND patch -p0 < ${CMAKE_CURRENT_SOURCE_DIR}/StdVector.patch
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}  -DCMAKE_BUILD_TYPE:STRING=Release
   )
 
