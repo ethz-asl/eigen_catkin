@@ -95,11 +95,9 @@ else()
   endif()
 
   message(STATUS "Using eigen_catkin's Eigen in ${EIGEN_CATKIN_EIGEN_INCLUDE}")
-endif()
 
-if(NOT USE_SYSTEM_EIGEN)
   install(DIRECTORY ${EIGEN_CATKIN_EIGEN_INCLUDE}
-    DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
+          DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
   )
 endif()
 
