@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>eigen_catkin</name>
-  <version>0.0.301</version> 
+  <version>3.2.12</version>
   <description>eigen_catkin</description>
   <maintainer email="schneith@ethz.ch">Thomas Schneider</maintainer>
   <author>ASL</author>
