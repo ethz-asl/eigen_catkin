@@ -20,3 +20,7 @@
 *.out
 *.app
 *~
+
+# Bloom.
+debian
+obj*

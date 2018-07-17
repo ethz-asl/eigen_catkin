@@ -95,22 +95,9 @@ else()
   endif()
 
   message(STATUS "Using eigen_catkin's Eigen in ${EIGEN_CATKIN_EIGEN_INCLUDE}")
-endif()
 
-cs_add_library(${PROJECT_NAME} src/dependency_tracker.cc)
-
-if(NOT USE_SYSTEM_EIGEN)
-  add_dependencies(${PROJECT_NAME} eigen_src)
-endif()
-
-cs_install()
-
-if(NOT USE_SYSTEM_EIGEN)
   install(DIRECTORY ${EIGEN_CATKIN_EIGEN_INCLUDE}
-    DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
-    FILES_MATCHING PATTERN "*.hpp"
-    PATTERN "*.h"
-    PATTERN ".svn" EXCLUDE
+          DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
   )
 endif()
 
