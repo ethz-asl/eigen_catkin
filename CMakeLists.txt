@@ -10,7 +10,7 @@ include(ExternalProject)
 set(EIGEN_CATKIN_EIGEN_INCLUDE ${CATKIN_DEVEL_PREFIX}/include/eigen3)
 set(EIGEN_CATKIN_EIGEN_INCLUDE_SIGNATURE ${EIGEN_CATKIN_EIGEN_INCLUDE}/signature_of_eigen3_matrix_library)
 
-set(EIGEN_MINIMUM_VERSION 3.2.10)
+set(EIGEN_MINIMUM_VERSION 3.3.4)
 
 # If set to OFF, will compile the given version of Eigen.
 # If set to ON, will use the system version of Eigen.
