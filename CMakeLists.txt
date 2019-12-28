@@ -10,7 +10,7 @@ include(ExternalProject)
 set(EIGEN_CATKIN_EIGEN_INCLUDE ${CATKIN_DEVEL_PREFIX}/include/eigen3)
 set(EIGEN_CATKIN_EIGEN_INCLUDE_SIGNATURE ${EIGEN_CATKIN_EIGEN_INCLUDE}/signature_of_eigen3_matrix_library)
 
-set(EIGEN_MINIMUM_VERSION 3.2.10)
+set(EIGEN_MINIMUM_VERSION 3.3.4)
 
 # If set to OFF, will compile the given version of Eigen.
 # If set to ON, will use the system version of Eigen.
@@ -85,9 +85,10 @@ else()
   file(MAKE_DIRECTORY ${EIGEN_CATKIN_EIGEN_INCLUDE})
   ExternalProject_Add(eigen_src
     UPDATE_COMMAND ""
-    URL http://bitbucket.org/eigen/eigen/get/3.2.10.tar.bz2
-    PATCH_COMMAND patch -p0 < ${CMAKE_CURRENT_SOURCE_DIR}/StdVector.patch
-    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}  -DCMAKE_BUILD_TYPE:STRING=Release
+    URL http://bitbucket.org/eigen/eigen/get/3.3.4.tar.bz2
+    URL_MD5 a7aab9f758249b86c93221ad417fbe18
+    PATCH_COMMAND patch -p0 < ${CMAKE_CURRENT_SOURCE_DIR}/StdVector.patch && patch -p0 < ${CMAKE_CURRENT_SOURCE_DIR}/DisableTests.patch && patch -p0 < ${CMAKE_CURRENT_SOURCE_DIR}/FixWarning.patch
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX} -DCMAKE_BUILD_TYPE:STRING=Release -DBUILD_TESTING=OFF
   )
 
   if(EXISTS ${EIGEN_CATKIN_EIGEN_INCLUDE_SIGNATURE}.off)
