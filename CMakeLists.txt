@@ -10,7 +10,7 @@ include(ExternalProject)
 set(EIGEN_CATKIN_EIGEN_INCLUDE ${CATKIN_DEVEL_PREFIX}/include/eigen3)
 set(EIGEN_CATKIN_EIGEN_INCLUDE_SIGNATURE ${EIGEN_CATKIN_EIGEN_INCLUDE}/signature_of_eigen3_matrix_library)
 
-set(EIGEN_MINIMUM_VERSION 3.2.10)
+set(EIGEN_MINIMUM_VERSION 3.3.7)
 
 # If set to OFF, will compile the given version of Eigen.
 # If set to ON, will use the system version of Eigen.
@@ -44,6 +44,7 @@ if(USE_SYSTEM_EIGEN STREQUAL "AUTO")
   endif()
 endif()
 
+set(USE_SYSTEM_EIGEN "OFF")
 if(USE_SYSTEM_EIGEN)
   message(STATUS "eigen_catkin is configured to USE system eigen")
   if(EXISTS ${EIGEN_CATKIN_EIGEN_INCLUDE_SIGNATURE})
@@ -85,7 +86,7 @@ else()
   file(MAKE_DIRECTORY ${EIGEN_CATKIN_EIGEN_INCLUDE})
   ExternalProject_Add(eigen_src
     UPDATE_COMMAND ""
-    URL http://bitbucket.org/eigen/eigen/get/3.3.3.tar.bz2
+    URL http://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2
     PATCH_COMMAND patch -p0 < ${CMAKE_SOURCE_DIR}/StdVector.patch
     CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CATKIN_DEVEL_PREFIX}  -DCMAKE_BUILD_TYPE:STRING=Release
   )
